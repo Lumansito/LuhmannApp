@@ -18,7 +18,7 @@ export function App() {
                     <button>Dueños</button>
                 </>
             ) : 
-            renderComponent // Remove the quotes around the component
+                renderComponent // Remove the quotes around the component
             }
         </div>
     );
