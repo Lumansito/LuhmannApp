@@ -1,0 +1,26 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+.botones{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: aliceblue;
+    transition: .3s ease background-color;
+    color: black;
+}
