@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { Obras } from './Obras';
+import { Empleados } from './Empleados';
+import {ejecutarConsulta} from './Server';
+
+// Rest of the code...
 
 export function App() {
     const [renderComponent, setRenderComponent] = useState("no");
@@ -12,7 +16,6 @@ export function App() {
         setRenderComponent("no");
     };
 
-    
     return (
         <div className="botones">
             {renderComponent === "no" ? (
@@ -23,8 +26,9 @@ export function App() {
                     <button onClick={() => handlePagClick(<Duenios volver={volver}/>)} >Dueños</button>
                 </>
             ) : 
-                renderComponent // Remove the quotes around the component
+                renderComponent
             }
         </div>
     );
 };
+
