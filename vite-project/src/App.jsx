@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Obras } from './Obras';
 import { Empleados } from './Empleados';
-import {ejecutarConsulta} from './Server';
 
 // Rest of the code...
 
