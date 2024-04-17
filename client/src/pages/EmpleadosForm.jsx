@@ -47,7 +47,7 @@ function EmpleadosForm() {
         )}
       </Formik>
 
-      <Link to="/empleados">Cancelar</Link>
+      <Link to="/empleados">Volver</Link>
     </div>
   );
 }

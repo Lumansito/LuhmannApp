@@ -1,11 +1,14 @@
 import { pool } from "../db.js";
 
+
 export const getEmpleados = async (req, res) => {
   try {
     const [result] = await pool.query("SELECT * FROM empleados");
-    res.json(result);
-    if (response.length === 0) {
+    
+    if (result.length === 0) {
       return res.status(404).json({ message: "Empleados sin cargar" });
+    }else{
+      res.json(result);
     }
   } catch (error) {
     console.log(error);
