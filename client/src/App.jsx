@@ -5,9 +5,11 @@ import NotFound from "./pages/NotFound";
 import EmpleadosForm from "./pages/EmpleadosForm";
 import Empleados from "./pages/Empleados.jsx";
 import NavBar from "./components/NavBar.jsx";
+import { EmpleadoProvider } from "./context/EmpleadoContext.jsx";
+
 function App() {
   return (
-    <>
+    <EmpleadoProvider>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -15,7 +17,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/empleados" element={<Empleados />} />
       </Routes>
-    </>
+    </EmpleadoProvider>
   );
 }
 export default App;

@@ -1,25 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getEmpleados } from "../api/empleados.api";
 import EmpleadoCard from "../components/EmpleadoCard";
+import { useEmpleados } from "../context/EmpleadoContext";
 
 function Empleados() {
-  const [empleados, setEmpleados] = useState([]);
-
+  const { empleados, loadEmpleados } = useEmpleados();
   useEffect(() => {
-    async function loadEmpleados() {
-      try {
-        const response = await getEmpleados();
-        setEmpleados(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
     loadEmpleados();
   }, []);
 
   function renderMain() {
-    if(empleados.length === 0) return (<h2>No hay empleados</h2>);
+    if (empleados.length === 0) return <h2>No hay empleados</h2>;
     return empleados.map((empleado) => (
       <EmpleadoCard empleado={empleado} key={empleado.id} />
     ));

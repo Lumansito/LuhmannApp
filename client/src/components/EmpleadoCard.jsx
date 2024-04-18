@@ -1,4 +1,6 @@
 import { deleteEmpleado } from "../api/empleados.api";
+import { useContext } from "react";
+import { EmpleadoContext } from "../context/EmpleadoContext";
 
 function EmpleadoCard({ empleado }) {
   const handleDelete = async (id) => {
