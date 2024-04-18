@@ -18,12 +18,8 @@ export const EmpleadoProvider = ({ children }) => {
   const [empleados, setEmpleados] = useState([]);
 
   async function loadEmpleados() {
-    try {
-      const response = await getEmpleados();
-      setEmpleados(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await getEmpleados();
+    setEmpleados(response.data);
   }
   return (
     <EmpleadoContext.Provider value={{ empleados, loadEmpleados }}>
