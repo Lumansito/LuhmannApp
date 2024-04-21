@@ -1,24 +1,43 @@
 import { Form, Formik } from "formik";
-import { Link } from "react-router-dom";
-import { createEmpleado } from "../api/empleados.api";
+import { useEmpleados } from "../context/EmpleadoProvider";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 function EmpleadosForm() {
+  const { createEmpleado, getEmpleado, updateEmpleado } = useEmpleados();
+  const params = useParams();
+  const [empleado, setEmpleado] = useState({ nombre: "", apellido: "" });
+
+  useEffect(() => {
+    const loadEmpleado = async () => {
+      if (params.id) {
+        const empleadoBD = await getEmpleado(params.id);
+        setEmpleado({
+          nombre: empleadoBD[0].nombre,
+          apellido: empleadoBD[0].apellido,
+        });
+      }
+    };
+    loadEmpleado();
+  }, []);
+
   return (
     <div>
+      <h1>{params.id ? "Editar Empleado" : "Crear Empleado"}</h1>
       <Formik
-        initialValues={{
-          nombre: "",
-          apellido: "",
-        }}
+        initialValues={empleado}
+        enableReinitialize={true}
         onSubmit={async (values, actions) => {
-          try {
-            const response = await createEmpleado(values);
-            console.log(response);
-            actions.resetForm();
-          } catch (error) {
-            console.log(error);
+          console.log(values);
+
+          if (params.id) {
+            await updateEmpleado(params.id, values);
+            return;
+          } else {
+            await createEmpleado(values);
           }
-          
+
+          actions.resetForm();
         }}
       >
         {({ handleChange, handleSubmit, values, isSubmitting }) => (
@@ -30,7 +49,7 @@ function EmpleadosForm() {
               name="nombre"
               placeholder="Ingrese Nombre"
               onChange={handleChange}
-              value = {values.nombre}
+              value={values.nombre}
             />
 
             <label>Apellido:</label>
@@ -40,10 +59,12 @@ function EmpleadosForm() {
               name="apellido"
               placeholder="Ingrese Apellido"
               onChange={handleChange}
-              value = {values.apellido}
+              value={values.apellido}
             />
 
-            <button type="submit" disabled={isSubmitting}>{isSubmitting?"Guardando..." : "Guardar"}</button>
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Guardando..." : "Guardar"}
+            </button>
           </Form>
         )}
       </Formik>
@@ -52,4 +73,5 @@ function EmpleadosForm() {
     </div>
   );
 }
+
 export default EmpleadosForm;

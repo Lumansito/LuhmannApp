@@ -1,5 +1,11 @@
-import { createContext, useContext, useState } from "react";
-import { getEmpleados, deleteEmpleadoRequest } from "../api/empleados.api.js";
+import { useContext, useState } from "react";
+import {
+  getEmpleadosRequest,
+  deleteEmpleadoRequest,
+  getEmpleadoByIdRequest,
+  createEmpleadoRequest,
+  updateEmpleadoRequest,
+} from "../api/empleados.api.js";
 import { EmpleadoContext } from "../context/EmpleadoContext";
 
 export const useEmpleados = () => {
@@ -17,7 +23,7 @@ export const EmpleadoProvider = ({ children }) => {
   const [empleados, setEmpleados] = useState([]);
 
   async function loadEmpleados() {
-    const response = await getEmpleados();
+    const response = await getEmpleadosRequest();
     setEmpleados(response.data);
   }
 
@@ -34,9 +40,37 @@ export const EmpleadoProvider = ({ children }) => {
     }
   };
 
+  const createEmpleado = async(values) =>{
+    try {
+      const response = await createEmpleadoRequest(values);
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  
+  const getEmpleado = async (id) => {
+    try {
+      const response = await getEmpleadoByIdRequest(id);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateEmpleado = async (id, empleado) => {
+    try {
+      await updateEmpleadoRequest(id, empleado);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   return (
     <EmpleadoContext.Provider
-      value={{ empleados, loadEmpleados, deleteEmpleado }}
+      value={{ empleados, loadEmpleados, deleteEmpleado ,createEmpleado, getEmpleado, updateEmpleado}}
     >
       {children}
     </EmpleadoContext.Provider>
