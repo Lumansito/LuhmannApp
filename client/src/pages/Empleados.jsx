@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import EmpleadoCard from "../components/EmpleadoCard";
-import { useEmpleados } from "../context/EmpleadoContext";
+import { useEmpleados } from "../context/EmpleadoProvider";
 
 function Empleados() {
   const { empleados, loadEmpleados } = useEmpleados();

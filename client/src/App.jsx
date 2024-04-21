@@ -5,7 +5,7 @@ import NotFound from "./pages/NotFound";
 import EmpleadosForm from "./pages/EmpleadosForm";
 import Empleados from "./pages/Empleados.jsx";
 import NavBar from "./components/NavBar.jsx";
-import { EmpleadoProvider } from "./context/EmpleadoContext.jsx";
+import { EmpleadoProvider } from "./context/EmpleadoProvider.jsx";
 
 function App() {
   return (

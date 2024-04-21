@@ -1,7 +1,6 @@
 import { Form, Formik } from "formik";
 import { Link } from "react-router-dom";
 import { createEmpleado } from "../api/empleados.api";
-import { useEmpleados } from "react";
 
 function EmpleadosForm() {
   return (
