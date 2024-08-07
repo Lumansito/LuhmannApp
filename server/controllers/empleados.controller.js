@@ -3,7 +3,7 @@ import { pool } from "../db.js";
 
 export const getEmpleados = async (req, res) => {
   try {
-    const [result] = await pool.query("SELECT * FROM empleados");
+    const [result] = await pool.query("SELECT * FROM personas WHERE rol = 'empleado'");
     
     if (result.length === 0) {
       return res.status(404).json({ message: "Empleados sin cargar" });

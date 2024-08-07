@@ -22,6 +22,9 @@ export const EmpleadoProvider = ({ children }) => {
   //proveedor para acceder a los datos de los empleados desde cualquier componente
   const [empleados, setEmpleados] = useState([]);
 
+
+
+  
   async function loadEmpleados() {
     const response = await getEmpleadosRequest();
     setEmpleados(response.data);
