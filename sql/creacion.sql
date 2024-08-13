@@ -10,7 +10,7 @@ CREATE TABLE persona(
 );
 
 CREATE TABLE obra(
-    nroObra int,
+    nroObra int AUTO_INCREMENT,
     nombreObra varchar(50),
     fechaInicio date,
     fechaFin date,
