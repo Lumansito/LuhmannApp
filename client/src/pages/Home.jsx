@@ -4,7 +4,7 @@ function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <Link to="/empleados">Empleados</Link>
+      <Link to="/personas">Personas</Link>
     </div>
   );
 }

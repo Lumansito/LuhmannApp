@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import { useEmpleados } from "../context/EmpleadoProvider";
+import { useEmpleados } from "../context/Personas/EmpleadoProvider";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
