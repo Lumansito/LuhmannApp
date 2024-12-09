@@ -8,11 +8,11 @@ function PersonaCard({ persona }) {
   return (
     <div>
       <h2>
-        {persona.nombre} {persona.apellido} {persona.rol} {persona.dni}
+        {persona.nombre} {persona.apellido} {persona.dni}
         <button onClick={() => navigate(`/persona/edit/${persona.dni}`)}>
           Editar
         </button>
-        <button onClick={() => deletePersona(persona.dni, persona.rol)}>Eliminar</button>
+        <button onClick={() => deletePersona(persona.dni)}>Eliminar</button>
       </h2>
     </div>
   );

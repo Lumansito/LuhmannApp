@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PersonaCard from "../components/PersonaCard";
-import  {usePersonas}  from "../context/Personas/PersonaProvider";
+import { usePersonas } from "../context/Personas/PersonaProvider";
 
 function Personas() {
   const { personas, loadPersonas } = usePersonas();
   useEffect(() => {
-    loadPersonas("empleados");
+
+    loadPersonas();
   }, []);
 
   function renderMain() {
@@ -20,7 +21,7 @@ function Personas() {
     <div>
       <h1>Personas List</h1>
       {renderMain()}
-      <Link to="/personas/new">Nueva persona</Link>
+      <Link to="/persona/nueva">Nueva persona</Link>
       <br></br>
       <Link to="/">Volver</Link>
     </div>

@@ -1,9 +1,9 @@
 import { pool } from "../db.js";
 
 
-export const getDueños = async (req, res) => {
+export const getPersonas = async (req, res) => {
   try {
-    const [result] = await pool.query("SELECT * FROM persona WHERE rol = 'dueño'");
+    const [result] = await pool.query("SELECT * FROM persona");
     
     if (result.length === 0) {
       return res.status(404).json({ message: "Dueños sin cargar" });
@@ -15,33 +15,7 @@ export const getDueños = async (req, res) => {
   }
 };
 
-export const getEmpleados = async (req, res) => {
-  try {
-    const [result] = await pool.query("SELECT * FROM persona WHERE  rol = 'empleado'", [
-      req.params.id,
-    ]);
-    if (result.length === 0) {
-      return res.status(404).json({ message: "Empleados sin cargar" });
-    }
-    res.json(result);
-  } catch (error) {
-    console.log(error);
-  }
-};
 
-export const getArquitectos = async (req, res) => {
-  try {
-    const [result] = await pool.query("SELECT * FROM persona WHERE rol = 'arquitecto'", [
-      req.params.id,
-    ]);
-    if (result.length === 0) {
-      return res.status(404).json({ message: "Arquitectos sin cargar" });
-    }
-    res.json(result);
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 export const getPersonaByDniRol = async (req, res) => {
   try{
@@ -124,9 +98,8 @@ export const updatePersona = async (req, res) => {
 
 export const deletePersona = async (req, res) => {
   try {
-    const [result] = await pool.query("DELETE FROM persona WHERE dni = ? and rol = ?", [
+    const [result] = await pool.query("DELETE FROM persona WHERE dni = ? ", [
       req.params.dni,
-      req.params.rol,
     ]);
     if (result.affectedRows === 0) {
       return res.status(404).json({ message: "Persona no encontrada" });

@@ -1,10 +1,8 @@
 import { useContext, useState } from "react";
 import {
-  getEmpleadosRequest,
+  getPersonasRequest,
   deletePersonaRequest,
   createPersonaRequest,
-  getArquitectosRequest,
-  getDueñosRequest,
   getPersonaByIdRequest,
   updatePersonaRequest,
 
@@ -26,29 +24,20 @@ const PersonaProvider = ({ children }) => {
   const [personas, setPersonas] = useState([]);
 
 
-  async function loadPersonas(rol) {
+  async function loadPersonas() {
 
-    if(rol === "empleados"){
-      const response = await getEmpleadosRequest();
-      setPersonas(response.data);
-    }
-    if(rol === "arquitectos"){
-      const response = await getArquitectosRequest();
-      setPersonas(response.data);
-    }
-    if(rol === "duenos"){
-      const response = await getDueñosRequest();
-      setPersonas(response.data);
-    }
+    const response = await getPersonasRequest();
+    setPersonas(response.data);
+    
   }
 
-  const deletePersona = async (dni, rol) => {
+  const deletePersona = async (dni) => {
     try {
       if (!window.confirm("¿Estás seguro de eliminar el empleado?")) {
         return;
       }
-      await deletePersonaRequest(dni, rol);
-      setPersonas(personas.filter((Persona) => Persona.dni !== dni && Persona.rol !== rol));
+      await deletePersonaRequest(dni);
+      setPersonas(personas.filter((Persona) => Persona.dni !== dni));
     } catch (error) {
       alert("Error al eliminar Persona");
       console.log(error);
@@ -66,9 +55,9 @@ const PersonaProvider = ({ children }) => {
   }
 
   
-  const getPersona = async (dni, rol) => {
+  const getPersona = async (dni) => {
     try {
-      const response = await getPersonaByIdRequest(dni, rol);
+      const response = await getPersonaByIdRequest(dni);
       return response.data;
     } catch (error) {
       console.log(error);

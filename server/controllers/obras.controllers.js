@@ -16,7 +16,7 @@ export const getObras = async (req, res) => {
 
   export const getObraBynroObra = async (req, res) => {
     try{
-      const [result] = await pool.query("SELECT * FROM obra WHERE nroObra = ?", [
+      const [result] = await pool.query("SELECT * FROM obra WHERE idObra = ?", [
         req.params.nroObra,
       ]);
       

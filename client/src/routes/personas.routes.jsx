@@ -7,7 +7,8 @@ export function PersonasRoutes() {
   return (
     <PersonaProvider>
       <Routes>
-        <Route path="/" element={<Personas/>} />
+        <Route path="/" element={<Personas/>} /> 
+        <Route path="/nueva" element={<h1>Persona Nueva</h1>} />
       </Routes>
     </PersonaProvider>
   );

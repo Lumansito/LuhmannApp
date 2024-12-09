@@ -1,11 +1,7 @@
 import {Router} from "express";
 import {
-  getEmpleados,
-  getArquitectos,
-  getDueños,
+  getPersonas,
   getPersonaByDniRol,
-  getArquitectosByObra,
-  getDueñosByObra,
   createPersona,
   updatePersona,
   deletePersona,
@@ -14,22 +10,14 @@ import {
 
 const router = Router();
 
-router.get("/api/empleados", getEmpleados);
+router.get("/api/personas", getPersonas);
 
-router.get("/api/arquitectos", getArquitectos);
-
-router.get("/api/duenos", getDueños); 
-
-router.get("/api/persona/:dni/:rol", getPersonaByDniRol);
-
-router.get("/api/arquitectos/:nroObra", getArquitectosByObra);
-
-router.get("/api/duenos/:nroObra", getDueñosByObra);
+router.get("/api/persona/:dni", getPersonaByDniRol);
 
 router.post("/api/persona", createPersona);
 
-router.put("/api/persona/:dni/:rol", updatePersona);
+router.put("/api/persona/:dni", updatePersona);
 
-router.delete("/api/persona/:dni/:rol", deletePersona);
+router.delete("/api/persona/:dni", deletePersona);
 
 export default router;
