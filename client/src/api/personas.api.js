@@ -1,15 +1,17 @@
 import axios from "axios";
+const API_URL = "http://localhost:4000/api/"
+
 export const createPersonaRequest = async (persona) =>
-  await axios.post("http://192.168.1.11:4000/api/persona", persona);
+  await axios.post (API_URL+"persona", persona);
 
 export const getPersonasRequest = async () =>
-  await axios.get("http://192.168.1.11:4000/api/personas");
+  await axios.get(API_URL+"persona");
 
 export const deletePersonaRequest = async (dni) =>
-  await axios.delete(`http://192.168.1.11:4000/api/persona/${dni}`);
+  await axios.delete(API_URL+`persona/${dni}`);
 
-export const getPersonaByIdRequest = async (dni) =>
-  await axios.get(`http://192.168.1.11:4000/api/persona/${dni}`);
+export const getPersonaByDniRequest = async (dni) =>
+  await axios.get(API_URL+`persona/${dni}`);
 
 export const updatePersonaRequest = async (dni, persona) => 
-  await axios.put(`http://192.168.1.11:4000/api/persona/${dni}`, persona);
+  await axios.put(API_URL+`persona/${dni}`, persona);

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PersonaCard from "../components/PersonaCard";
-import { usePersonas } from "../context/Personas/PersonaProvider";
+import { useAppContext} from "../context/Provider";
 
 function Personas() {
-  const { personas, loadPersonas } = usePersonas();
+  const { personas, loadPersonas } = useAppContext();
   useEffect(() => {
 
     loadPersonas();

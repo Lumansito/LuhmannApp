@@ -1,8 +1,8 @@
-import { usePersonas } from "../context/Personas/PersonaProvider";
+import { useAppContext } from "../context/Provider";
 import { useNavigate } from "react-router-dom";
 
 function PersonaCard({ persona }) {
-  const { deletePersona } = usePersonas();
+  const { deletePersona } = useAppContext();
   const navigate = useNavigate();
 
   return (

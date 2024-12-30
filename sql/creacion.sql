@@ -51,7 +51,7 @@ CREATE TABLE presente_visita(
     FOREIGN KEY(idVisita) REFERENCES visita(idVisita)
 );
 
-CRETE TABLE empleado_visita(
+CREATE TABLE empleado_visita(
 
     idEmpleadoVisita int AUTO_INCREMENT,
     idVisita int,

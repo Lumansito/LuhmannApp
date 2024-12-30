@@ -3,24 +3,24 @@ import {
   getPersonasRequest,
   deletePersonaRequest,
   createPersonaRequest,
-  getPersonaByIdRequest,
+  getPersonaByDniRequest,
   updatePersonaRequest,
 
-} from "../../api/personas.api.js";
-import {  PersonaContext } from "./PersonaContext.jsx";
+} from "../api/personas.api.js";
+import { Context } from "./Context.jsx";
 
-export const usePersonas = () => {
-  const context = useContext(PersonaContext);
+export const useAppContext = () => {
+  const context = useContext(Context);
   if (!context) {
     throw new Error(
-      "useEmpleados debe estar dentro del proveedor EmpleadoProvider"
+      "---"
     );
   }
   return context;
 };
 
-const PersonaProvider = ({ children }) => {
-  //proveedor para acceder a los datos de los empleados desde cualquier componente
+const Provider = ({ children }) => {
+
   const [personas, setPersonas] = useState([]);
 
 
@@ -57,7 +57,7 @@ const PersonaProvider = ({ children }) => {
   
   const getPersona = async (dni) => {
     try {
-      const response = await getPersonaByIdRequest(dni);
+      const response = await getPersonaByDniRequest(dni);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -73,11 +73,11 @@ const PersonaProvider = ({ children }) => {
   };
   
   return (
-    <PersonaContext.Provider
+    <Context.Provider
       value={{ personas, loadPersonas, deletePersona ,createPersona, getPersona, updatePersona}}>
       {children}
-    </PersonaContext.Provider>
+    </Context.Provider>
   );
 };
 
-export default PersonaProvider;
+export default Provider;

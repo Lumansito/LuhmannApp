@@ -1,7 +1,7 @@
 import {Router} from "express";
 import {
   getPersonas,
-  getPersonaByDniRol,
+  getPersonaByDni,
   createPersona,
   updatePersona,
   deletePersona,
@@ -10,9 +10,9 @@ import {
 
 const router = Router();
 
-router.get("/api/personas", getPersonas);
+router.get("/api/persona", getPersonas);
 
-router.get("/api/persona/:dni", getPersonaByDniRol);
+router.get("/api/persona/:dni", getPersonaByDni);
 
 router.post("/api/persona", createPersona);
 
